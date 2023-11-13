@@ -1,8 +1,11 @@
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<WebApplicationDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("WebApplicationDBContext") ?? throw new InvalidOperationException("Connection string 'WebApplicationDBContext' not found.")));
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
