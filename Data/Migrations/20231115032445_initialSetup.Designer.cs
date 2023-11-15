@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.Data;
 
@@ -11,9 +12,10 @@ using WebApplication1.Data;
 namespace WebApplication1.Data.Migrations
 {
     [DbContext(typeof(WebApplication1Context))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231115032445_initialSetup")]
+    partial class initialSetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,11 +34,11 @@ namespace WebApplication1.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedName")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -87,7 +89,7 @@ namespace WebApplication1.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("EmailConfirmed")
@@ -100,11 +102,11 @@ namespace WebApplication1.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("NormalizedEmail")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NormalizedUserName")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PasswordHash")
@@ -123,7 +125,7 @@ namespace WebApplication1.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -155,7 +157,7 @@ namespace WebApplication1.Data.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -167,11 +169,11 @@ namespace WebApplication1.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderKey")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ProviderDisplayName")
@@ -209,11 +211,11 @@ namespace WebApplication1.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LoginProvider")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
-                        
+
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Value")
