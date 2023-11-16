@@ -26,6 +26,25 @@ namespace WebApplication1.Controllers
                           View(await _context.Cake.ToListAsync()) :
                           Problem("Entity set 'WebAppContext.Cake'  is null.");
         }
+        // GET: Cakes/ShowSearchForm
+        public IActionResult ShowSearchForm()
+        {
+            return _context.Cake != null ?
+                        View() :
+                        Problem("Entity set 'WebAppContext.Cake'  is null.");
+        }
+        // GET: Cakes/ShowSearchResults
+        public string ShowSearchResults(string SearchPhrase)
+        {
+            if (_context.Cake != null)
+            {
+                return "Result: " + SearchPhrase;
+            }
+            else
+            {
+                return "";
+            }
+        }
 
         // GET: Cakes/Details/5
         public async Task<IActionResult> Details(int? id)
