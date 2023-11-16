@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -34,16 +35,11 @@ namespace WebApplication1.Controllers
                         Problem("Entity set 'WebAppContext.Cake'  is null.");
         }
         // GET: Cakes/ShowSearchResults
-        public string ShowSearchResults(string SearchPhrase)
+       public async Task<IActionResult> ShowSearchResults(string SearchPhrase)
         {
-            if (_context.Cake != null)
-            {
-                return "Result: " + SearchPhrase;
-            }
-            else
-            {
-                return "";
-            }
+            return _context.Cake != null ?
+                        View("Index", await _context.Cake.Where(j => j.flavour.Contains(SearchPhrase)).ToListAsync()) :
+                        Problem("Entity set 'WebAppContext.Cake'  is null.");
         }
 
         // GET: Cakes/Details/5
@@ -65,6 +61,7 @@ namespace WebApplication1.Controllers
         }
 
         // GET: Cakes/Create
+        //[Authorize]
         public IActionResult Create()
         {
             return View();
