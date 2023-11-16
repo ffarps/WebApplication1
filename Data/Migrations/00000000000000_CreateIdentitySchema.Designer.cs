@@ -9,7 +9,7 @@ using WebApplication1.Data;
 
 namespace WebApplication1.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(WebAppContext))]
     [Migration("00000000000000_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
